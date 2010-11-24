@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="4.5.2">
+  <name>Packer Button</name>
+  <author>Mike Hinlgey</author>
+  <creationDate>October 2010</creationDate>
+  <copyright>(C) 2010 Mike Hingley</copyright>
+  <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+  <version>1.0</version>
+  <description>A Packer Button Midule</description>
+  <files>
+    <filename module="mod_packerbutton">mod_packerbutton.php</filename>
+	<filename module="mod_packerbutton">packerbutton.png</filename>
+	<filename module="mod_packerbutton">packer.mp3</filename>
+	
+  </files>
+  <params />
+</mosinstall>
