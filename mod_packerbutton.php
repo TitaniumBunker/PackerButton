@@ -11,26 +11,50 @@ defined( '_VALID_MOS' ) or die( 'Direct Access to this location is not allowed.'
  
 ?>
 
+<script type="text/javascript" src="<?php echo JURI::root() ?>modules/mod_packerbutton/script/soundmanager2.js"></script>
+<script type="text/javascript">
+soundManager.debugMode = false;
+soundManager.url = '<?php echo JURI::root() ?>modules/mod_packerbutton/swf/';
+soundManager.onready(function(oStatus) {
+
+  if (!oStatus.success) {
+    return false;	
+  }
+  // soundManager is initialised, ready to use. Create a sound for this demo page.
+
+  if (soundManager.flashVersion > 8) {
+    t = window.setInterval(checkRAM,500);
+    document.getElementById('flash-ram-use').style.display = 'inline';
+    checkRAM();
+  }
+
+  soundManager.createSound({
+    id: 'aDrumSound',
+    url: 'modules/mod_packerbutton/packer.mp3'
+  });
+
+
+
+});
+
+</script>
+
 <script>
 function EvalSound(soundobj) 
 {
-    var thissound= document.getElementById(soundobj)
+	var aSoundObject = soundManager.createSound({id:'mySound2', url:'<?php echo JURI::root() ?>modules/mod_packerbutton/packer.mp3'});
+	aSoundObject.play();
 
-if (!thissound) {
-thissound= document.getElementById(soundobj+'_embed')
-}
-
-thissound.play();
-    //document.getElementById(soundobj).play();
-//eval("document."+soundobj);
-        //thissound.play();
+	//soundManager.createSound({id:'mySound1',url:'packer.wav'});
+	//soundManager.play('mySound1');
+	//aDrumSound.play();
 }
 
 
 // PRELOADING IMAGES
 if (document.images) {
- btn1_down=new Image(); btn1_down.src="modules/mod_packerbutton/packerbutton_down.png"; 
- btn1_up  =new Image(); btn1_up.src  ="modules/mod_packerbutton/packerbutton.png"; 
+ btn1_down=new Image(); btn1_down.src="<?php echo JURI::root() ?>modules/mod_packerbutton/packerbutton_down.png"; 
+ btn1_up  =new Image(); btn1_up.src  ="<?php echo JURI::root() ?>modules/mod_packerbutton/packerbutton.png"; 
 
 }
 
@@ -53,12 +77,7 @@ function releaseButton(btName) {
 </script>
 
 
-<p>
-<audio src="modules/mod_packerbutton/packer.wav" autostart=false width=0 height=0 name="sound1" id="sound1" enablejavascript="true">
-<embed src="modules/mod_packerbutton/packer.wav" autostart=false width=0 height=0 name="sound1_embed" id="sound1_embed" enablejavascript="true">
-</audio>
-</p>
-<p>
+
 
 <a style="border:0;text-decoration: none;color:FFFFFF;border:none;"
 
@@ -67,8 +86,14 @@ onMouseUp="releaseButton('btn1');return true;"
 onMouseOut="releaseButton('btn1');return true;" 
 >
 
-<img src="modules/mod_packerbutton/packerbutton.png" name="btn1" alt="packer button" style="border:0;" title="packer"  />
+<img src="<?php echo JURI::root() ?>modules/mod_packerbutton/packerbutton.png" name="btn1" alt="packer button" style="border:0;" title="packer"  />
+
+
+
 
 </a>
+
+
+
 
 
